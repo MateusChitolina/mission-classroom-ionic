@@ -1,0 +1,7 @@
+{
+  "name": "mission-classroom-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
