@@ -1,9 +1,5 @@
 import {
   IonApp,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
   IonContent,
   IonHeader,
   IonTitle,
@@ -40,6 +36,7 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
+import ClassCard from './components/ClassCard';
 import './theme/variables.css';
 
 setupIonicReact();
@@ -53,14 +50,7 @@ const App: React.FC = () => (
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding">
-
-        <IonCard>
-          <IonCardHeader>
-            <IonCardTitle>Card Title</IonCardTitle>
-          </IonCardHeader>
-          <IonCardContent>Here's a small text description for the card content. Nothing more, nothing less.</IonCardContent>
-        </IonCard>
-
+      <ClassCard></ClassCard>
       </IonContent>
     </IonReactRouter>
   </IonApp>
