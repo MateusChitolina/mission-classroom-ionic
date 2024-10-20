@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8099/",
+  baseURL: "https://classroommission.onrender.com/",
 });
 
 export default api;
