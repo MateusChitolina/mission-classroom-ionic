@@ -1,9 +1,6 @@
 import {
   IonApp,
   IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -36,24 +33,89 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
-import ClassCard from './components/ClassCard';
+import { useEffect, useState } from 'react';
+import ClassCard from './components/classBox/ClassCard';
+import Header from './components/Header';
+import api from './services/Api';
 import './theme/variables.css';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Header</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent className="ion-padding">
-      <ClassCard></ClassCard>
-      </IonContent>
-    </IonReactRouter>
-  </IonApp>
-);
+interface ClassroomObject {
+  title: string,
+  description: string,
+  auxiliarLabel: string,
+  topBackgroundSrc: string,
+  userImageSrc: string,
+  classroomAssignments: [
+    {
+      id: string,
+      topLabel: string,
+      bottomLabel: string
+    }
+  ]
+}
+
+interface ClassroomUserObject {
+  profileImageSrc: string,
+}
+
+const App: React.FC = () => {
+  const [classroomObject, setClassroomObject] = useState<ClassroomObject[]>([]);
+  const [profileImageSrc, setProfileImageSrc] = useState<ClassroomUserObject>({"profileImageSrc": ""});
+
+  useEffect(() => {
+      reloadList();
+      getProfileImageSrc();
+  }, []);
+
+  const reloadList = async () => {
+      try {
+        const response = await api.get("/classroom/search-all?userId=????????");
+        setClassroomObject(response.data as ClassroomObject[]);
+      } catch (error) {
+        console.error("Erro ao realizar a requisição para a api. Detalhes:\n" + error);
+      }
+  };
+
+  const getProfileImageSrc = async () => {
+    try {
+      const response = await api.get("/classroom/user/profile-image/search?userId=????????");
+      setProfileImageSrc(response.data as ClassroomUserObject);
+      console.log(response.data)
+    } catch (error) {
+      console.error("Erro ao realizar a requisição para a api. Detalhes:\n" + error);
+    }
+};
+  
+  const renderClassBoxComponent = () => {
+    return (
+      <>
+        {classroomObject.map((classroomObject: ClassroomObject) => (
+          <ClassCard 
+            key={`${classroomObject.title}-${classroomObject.auxiliarLabel}`}
+            title={classroomObject.title} 
+            description={classroomObject.description} 
+            classGroup={classroomObject.auxiliarLabel} 
+            topBackgroundSrc={classroomObject.topBackgroundSrc} 
+            userImageSrc={classroomObject.userImageSrc} 
+            assignments={classroomObject.classroomAssignments} 
+          />
+        ))}
+      </>
+    );
+  }
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+      <Header profileImageSrc={profileImageSrc.profileImageSrc} />
+        <IonContent className="ion-padding">
+        {renderClassBoxComponent()}
+        </IonContent>
+      </IonReactRouter>
+    </IonApp>
+  )
+};
 
 export default App;
