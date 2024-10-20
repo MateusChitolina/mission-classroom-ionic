@@ -1,2 +1,44 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
+
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50% !important;  /* Força o arredondamento */
+    object-fit: cover;  /* Garante que a imagem se ajuste ao contêiner circular */
+    margin-right: 20px; /* Espaçamento do avatar para a borda direita */
+  }
+  
+  
+  .small-icon {
+    font-size: 18px;
+    margin-left: 10px; /* Espaçamento entre o avatar e o ícone de opções */
+  }
+  
+
+  ion-button {
+    --background: transparent;  /* Remove o fundo */
+    --background-focused: transparent;  /* Remove o fundo quando focado */
+    --background-activated: transparent;  /* Remove o fundo quando ativado */
+    --background-activated-opacity: 0;  /* Remove qualquer fundo ao clicar */
+    outline: none;  /* Remove outline */
+    box-shadow: none;  /* Remove qualquer sombra */
+  }
+  
+  ion-button:focus {
+    outline: none;  /* Remove outline no foco */
+    box-shadow: none;  /* Remove qualquer sombra no foco */
+  }
+  
+  ion-button::part(native) {
+    background: transparent !important;  /* Remove fundo do botão nativo */
+    outline: none !important;  /* Remove outline do botão nativo */
+    box-shadow: none !important;  /* Remove sombra do botão nativo */
+  }
+  
+  :root {
+    --ion-background-color: #202125; /* Cor preta no fundo */
+    --ion-background-color-rgb: 0, 0, 0;
+  }
+  
