@@ -8,6 +8,7 @@ http://ionicframework.com/docs/theming/ */
     border-radius: 50% !important;  /* Força o arredondamento */
     object-fit: cover;  /* Garante que a imagem se ajuste ao contêiner circular */
     margin-right: 20px; /* Espaçamento do avatar para a borda direita */
+    margin-top: 15px; /* Ajuste este valor para posicionar o avatar mais para baixo */
   }
   
   

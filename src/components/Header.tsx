@@ -3,6 +3,8 @@
 import { IonButton, IonButtons, IonHeader, IonIcon, IonImg, IonTitle, IonToolbar } from '@ionic/react';
 import { ellipsisVertical, menuOutline } from 'ionicons/icons';
 import '../theme/variables.css';
+import React from 'react';
+import { IonAvatar } from '@ionic/react';
 
 interface ContainerProps {
   profileImageSrc: string
@@ -27,7 +29,11 @@ const Header: React.FC<ContainerProps> = ({ profileImageSrc }) => {
 
         {/* Colocando avatar e ícone no lado direito usando slot="end" */}
         <IonButtons slot="end">
+
+        <IonAvatar>
           <IonImg src={profileImageSrc} alt="User Avatar" className="avatar" />
+        </IonAvatar>
+
           <IonIcon icon={ellipsisVertical} className="small-icon" style={{ color: 'white' }} />  {/* Ícone de três bolinhas em branco */}
           </IonButtons>
       </IonToolbar>
