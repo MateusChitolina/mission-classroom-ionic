@@ -24,11 +24,11 @@ const ClassCard: React.FC<ContainerProps> = ({title, description, classGroup, to
           <IonCardTitle style={{ color: 'white' }}>{title}</IonCardTitle>
           <IonCardSubtitle style={{ color: 'white' }}>{description}</IonCardSubtitle>
         </IonCardHeader>
-        <IonCardContent style={{ color: 'white' }}>{classGroup}</IonCardContent>
+        <IonCardContent style={{ color: 'lightgray' }}>{classGroup}</IonCardContent>
       </IonCard>
       {assignments?.length > 0 ? assignments.map((assignment: AssignmentProps) => {
         return(
-          <IonCardContent style={{padding: '7px 10px', border: '1px solid gray'}}>{assignment.topLabel} - {assignment.bottomLabel}</IonCardContent>
+          <IonCardContent style={{color: 'lightgray', padding: '7px 10px', border: '1px solid gray'}}>{assignment.topLabel} - {assignment.bottomLabel}</IonCardContent>
         );
       }) : undefined}
     </IonCard>
