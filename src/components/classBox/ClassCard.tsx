@@ -13,8 +13,8 @@ const ClassCard: React.FC<ContainerProps> = ({title, description, classGroup, to
   return (
     <IonCard style={{ backgroundImage: `url(${topBackgroundSrc})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <IonCardHeader>
-        <IonCardTitle>{title}</IonCardTitle>
-        <IonCardSubtitle>{description}</IonCardSubtitle>
+        <IonCardTitle style={{ color: 'white' }}>{title}</IonCardTitle>
+        <IonCardSubtitle style={{ color: 'white' }}>{description}</IonCardSubtitle>
       </IonCardHeader>
       <IonCardContent>{classGroup}</IonCardContent>
     </IonCard>
